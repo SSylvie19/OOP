@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane prefHeight="455.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.des.controller.TrangChuController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <BorderPane prefHeight="455.0" prefWidth="679.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <AnchorPane fx:id="trangchu" prefHeight="389.0" prefWidth="479.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label fx:id="welcome" alignment="CENTER" layoutX="52.0" layoutY="94.0" prefHeight="107.0" prefWidth="425.0" text="WELCOME !" textAlignment="LEFT" textFill="#33e7ff" textOverrun="ELLIPSIS" underline="false" wrapText="false">
+                                            <font>
+                                                <Font size="70.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="166.0" layoutY="194.0" prefWidth="191.0" text="The software is designed and developed">
+                                            <font>
+                                                <Font size="10.0" fx:id="x1" />
+                                            </font>
+                                        </Label>
+                                        <Label font="$x1" layoutX="234.0" layoutY="208.0" text="by Group 15" />
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </AnchorPane>
+                    </center>
+                    <left>
+                        <AnchorPane prefHeight="389.0" prefWidth="142.0" style="-fx-background-color:linear-gradient(to bottom right, #65666B, #222230)">
+                            <children>
+                                <Button fx:id="truyxuat_btn" layoutX="22.0" layoutY="101.0" mnemonicParsing="false" onAction="#switchToTrichXuat" prefWidth="97.0" text="Trích xuất" />
+                                <Button fx:id="timkiem_btn" layoutX="23.0" layoutY="173.0" mnemonicParsing="false" onAction="#switchtoTimKiem" prefWidth="97.0" text="Tìm kiếm" />
+                                <Button id="timkiem_btn" fx:id="tuvan_btn" layoutX="23.0" layoutY="245.0" mnemonicParsing="false" onAction="#switchToTuVan" prefWidth="97.0" text="Tư vấn" />
+                                <Button fx:id="trangchu_btn" layoutX="23.0" layoutY="28.0" mnemonicParsing="false" onAction="#switchToTrangChu" prefWidth="96.0" text="Trang chủ" />
+                            </children>
+                        </AnchorPane>
+                    </left>
+                    <top>
+                        <Label alignment="CENTER" prefHeight="66.0001220703125" prefWidth="679.0" style="-fx-background-color:linear-gradient(to bottom right, #4187B5, #022859);" text="DATA EXTRACT SOFTWARE">
+                            <font>
+                                <Font size="30.0" />
+                            </font>
+                        </Label>
+                    </top>
+                </BorderPane>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane prefHeight="455.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.des.controller.TrichXuatController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <BorderPane prefHeight="455.0" prefWidth="679.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <AnchorPane fx:id="truyxuat" prefHeight="388.0" prefWidth="537.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <TextField fx:id="Link" layoutX="37.0" layoutY="149.0" prefHeight="46.0" prefWidth="319.0" promptText="Nhập link" />
+                                    <Button layoutX="391.0" layoutY="149.0" mnemonicParsing="false" onAction="#capNhat" prefHeight="46.0" prefWidth="104.0" text="Trích xuất" />
+                                    <ComboBox fx:id="chonnguon_tx_cbb" layoutX="37.0" layoutY="50.0" prefHeight="46.0" prefWidth="319.0" promptText="Chọn nguồn">
+                                        <items>
+                                            <FXCollections fx:factory="observableArrayList">
+                                                <String fx:value="Item 1" />
+                                                <String fx:value="Item 2" />
+                                                <String fx:value="Item 3" />
+                                            </FXCollections>
+                                        </items>
+                                    </ComboBox>
+                                    <Button fx:id="motrang_tx_btn" layoutX="391.0" layoutY="50.0" mnemonicParsing="false" onAction="#motrang_tx" prefHeight="46.0" prefWidth="104.0" text="Mở trang" />
+                                    <Button fx:id="tieptheo_tx_btn" layoutX="391.0" layoutY="248.0" mnemonicParsing="false" onAction="#tieptheo_tx" prefHeight="46.0" prefWidth="104.0" text="Xóa" />
+                                    <Label fx:id="label_tx" alignment="CENTER" layoutX="37.0" layoutY="208.0" prefHeight="27.0" prefWidth="319.0" />
+                                </AnchorPane>
+                            </children>
+                        </AnchorPane>
+                    </center>
+                    <left>
+                        <AnchorPane prefHeight="389.0" prefWidth="142.0" style="-fx-background-color:linear-gradient(to bottom right, #65666B, #222230)">
+                            <children>
+                                <Button fx:id="truyxuat_btn" layoutX="22.0" layoutY="101.0" mnemonicParsing="false" onAction="#switchToTrichXuat" prefWidth="97.0" text="Trích xuất" />
+                                <Button fx:id="timkiem_btn" layoutX="23.0" layoutY="173.0" mnemonicParsing="false" onAction="#switchtoTimKiem" prefWidth="97.0" text="Tìm kiếm" />
+                                <Button fx:id="tuvan_btn" layoutX="23.0" layoutY="245.0" mnemonicParsing="false" onAction="#switchToTuVan" prefWidth="97.0" text="Tư vấn" />
+                                <Button fx:id="trangchu_btn" layoutX="23.0" layoutY="28.0" mnemonicParsing="false" onAction="#switchToTrangChu" prefWidth="96.0" text="Trang chủ" />
+                            </children>
+                        </AnchorPane>
+                    </left>
+                    <top>
+                        <Label alignment="CENTER" prefHeight="66.0" prefWidth="679.0" style="-fx-background-color:linear-gradient(to bottom right, #4187B5, #022859);" text="DATA EXTRACT SOFTWARE">
+                            <font>
+                                <Font size="30.0" />
+                            </font>
+                        </Label>
+                    </top>
+                </BorderPane>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>
