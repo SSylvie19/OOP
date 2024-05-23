@@ -57,6 +57,8 @@ public class MacDinhController extends ScenceController implements Initializable
     public void chonnguon_tk(ActionEvent event) {
         try {
             String nguon_tk = (String) chonnguon_tk_cbb.getValue();
+            chuyenmuc_tk_cbb.setValue(null);
+            ta_tk.clear();
 
             for (int i = dataArray_tk1.size() - 1; i >= 0; i--) {
                 dataArray_tk1.remove(i);

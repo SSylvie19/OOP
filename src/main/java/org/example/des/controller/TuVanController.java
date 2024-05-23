@@ -6,5 +6,4 @@ import javafx.scene.layout.AnchorPane;
 public class TuVanController extends ScenceController {
     @FXML
     private AnchorPane tuvan;
-
 }

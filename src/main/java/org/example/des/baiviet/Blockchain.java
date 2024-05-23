@@ -58,7 +58,7 @@ public class Blockchain extends BaiViet {
             String noidung1 = doc.select("p.lead").text();
             noidung = noidung1 + " ";
 
-            Elements noidung2 = doc.select("p > span");
+            Elements noidung2 = doc.select("p");
             for (Element nd2 : noidung2) {
                 String nd2Text = nd2.text();
                 noidung = noidung + nd2Text + " ";

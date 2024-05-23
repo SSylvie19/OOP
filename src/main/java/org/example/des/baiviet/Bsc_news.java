@@ -42,7 +42,7 @@ public class Bsc_news extends BaiViet {
             //Nội dung bài viết
             String noidung = "";
             Elements noidungbv = doc.select("p");
-            for (int e = 32; e < noidungbv.size()-102; e++) {
+            for (int e = 26; e < noidungbv.size()-77; e++) {
                 String ndText = noidungbv.get(e).text();
                 noidung = noidung + ndText + " ";
             }

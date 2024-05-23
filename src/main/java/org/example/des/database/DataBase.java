@@ -8,8 +8,12 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import org.example.des.baiviet.*;
 
@@ -183,6 +187,7 @@ public class DataBase {
             return 2;
         }
     }
+
 
     public String getJsonName() {
         return name+".json";
