@@ -39,10 +39,10 @@ public class TimKiemController extends ScenceController {
     public void switchtoMacDinh(ActionEvent event) throws IOException {
         URL resource = getClass().getResource("/org/example/des/MacDinh.fxml");
         if (resource == null) {
-            System.out.println("TimKiem.fxml not found");
+            System.out.println("MacDinh.fxml not found");
             return;
         }
-        System.out.println("Switching to TimKiem.fxml");
+        System.out.println("Switching to MacDinh.fxml");
         root = FXMLLoader.load(resource);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

@@ -8,20 +8,15 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.chart.PieChart;
 import org.example.des.baiviet.*;
 
-public class DataBase {
+public class JsonDatabase implements Database {
     private String name;
     private List<String> danhSach = new ArrayList<>();
 
-    public DataBase(String name) {
+    public JsonDatabase(String name) {
         this.name = name;
         danhSach.add("https://blockchain.news");
         danhSach.add("https://www.forbes.com");
@@ -34,7 +29,8 @@ public class DataBase {
         danhSach.add("https://ripplecoinnews.com");
     }
 
-    public void saveToStoredFile (BaiViet baiViet){
+    @Override
+    public void saveToDatabase (BaiViet baiViet){
         try {
             //Ghi thông tin đối tượng vào Stored_File.json
             FileReader fileReader = new FileReader(this.getJsonName());
@@ -93,7 +89,76 @@ public class DataBase {
         }
     }
 
-    public boolean check(String url) {
+    @Override
+    public int checkSource(String url) {
+        if (url.indexOf("https://blockchain.news/news") >= 0) {
+            // Dùng hàm check kiểm tra xem bài viết đã có trong file Stored_File.json
+            // Nếu đã có thì chỉ thông báo "Bài viết đã có trong cơ sở dữ liệu từ trước."
+            if ((this.checkInDatabase(url)) == true) return 0;
+
+                // Nếu chưa có thì khởi tạo đối tượng thuộc loại bài viết đó
+                // Dùng phương thức saveToStoredFile() để lưu thông tin bài viết vào file Stored_File.json
+                // Thông báo "Cập nhật thông tin bài viết thành công !"
+            else {
+                this.saveToDatabase(new Blockchain(url));
+                return 1;
+            }
+
+        } else if (url.indexOf("https://www.forbes.com/sites/digital-assets") >= 0) {
+            if ((this.checkInDatabase(url)) == true) return 0;
+            else {
+                this.saveToDatabase(new Forbes(url));
+                return 1;
+            }
+        } else if (url.indexOf("https://www.coindesk.com") >= 0) {
+            if ((this.checkInDatabase(url)) == true) return 0;
+            else {
+                this.saveToDatabase(new Coindesk(url));
+                return 1;
+            }
+        }else if (url.indexOf("https://www.the-blockchain.com/") >= 0) {
+            if ((this.checkInDatabase(url)) == true) return 0;
+            else {
+                this.saveToDatabase(new The_blockchain(url));
+                return 1;
+            }
+        }else if (url.indexOf("https://decrypt.co/") >= 0) {
+            if ((this.checkInDatabase(url)) == true) return 0;
+            else {
+                this.saveToDatabase(new Decrypt(url));
+                return 1;
+            }
+        }else if (url.indexOf("https://u.today/") >= 0) {
+            if ((this.checkInDatabase(url)) == true) return 0;
+            else {
+                this.saveToDatabase(new U_today(url));
+                return 1;
+            }
+        }else if (url.indexOf("https://blockworks.co/news/") >= 0) {
+            if ((this.checkInDatabase(url)) == true) return 0;
+            else {
+                this.saveToDatabase(new Blockworks(url));
+                return 1;
+            }
+        }else if (url.indexOf("https://www.bsc.news/post/") >= 0) {
+            if ((this.checkInDatabase(url)) == true) return 0;
+            else {
+                this.saveToDatabase(new Bsc_news(url));
+                return 1;
+            }
+        }else if (url.indexOf("https://ripplecoinnews.com/") >= 0) {
+            if ((this.checkInDatabase(url)) == true) return 0;
+            else {
+                this.saveToDatabase(new Ripplecoinnews(url));
+                return 1;
+            }
+        }else {
+            return 2;
+        }
+    }
+
+    @Override
+    public boolean checkInDatabase(String url) {
         try {
             FileReader fileReader = new FileReader(this.getJsonName());
             JsonParser jsonParser = new JsonParser();
@@ -119,73 +184,6 @@ public class DataBase {
         } catch (Exception e) {
         }
         return false;
-    }
-
-    public int CheckInDatabase(String url) {
-        if (url.indexOf("https://blockchain.news/news") >= 0) {
-            // Dùng hàm check kiểm tra xem bài viết đã có trong file Stored_File.json
-            // Nếu đã có thì chỉ thông báo "Bài viết đã có trong cơ sở dữ liệu từ trước."
-            if ((this.check(url)) == true) return 0;
-
-                // Nếu chưa có thì khởi tạo đối tượng thuộc loại bài viết đó
-                // Dùng phương thức saveToStoredFile() để lưu thông tin bài viết vào file Stored_File.json
-                // Thông báo "Cập nhật thông tin bài viết thành công !"
-            else {
-                this.saveToStoredFile(new Blockchain(url));
-                return 1;
-            }
-
-        } else if (url.indexOf("https://www.forbes.com/sites/digital-assets") >= 0) {
-            if ((this.check(url)) == true) return 0;
-            else {
-                this.saveToStoredFile(new Forbes(url));
-                return 1;
-            }
-        } else if (url.indexOf("https://www.coindesk.com") >= 0) {
-            if ((this.check(url)) == true) return 0;
-            else {
-                this.saveToStoredFile(new Coindesk(url));
-                return 1;
-            }
-        }else if (url.indexOf("https://www.the-blockchain.com/") >= 0) {
-            if ((this.check(url)) == true) return 0;
-            else {
-                this.saveToStoredFile(new The_blockchain(url));
-                return 1;
-            }
-        }else if (url.indexOf("https://decrypt.co/") >= 0) {
-            if ((this.check(url)) == true) return 0;
-            else {
-                this.saveToStoredFile(new Decrypt(url));
-                return 1;
-            }
-        }else if (url.indexOf("https://u.today/") >= 0) {
-            if ((this.check(url)) == true) return 0;
-            else {
-                this.saveToStoredFile(new U_today(url));
-                return 1;
-            }
-        }else if (url.indexOf("https://blockworks.co/news/") >= 0) {
-            if ((this.check(url)) == true) return 0;
-            else {
-                this.saveToStoredFile(new Blockworks(url));
-                return 1;
-            }
-        }else if (url.indexOf("https://www.bsc.news/post/") >= 0) {
-            if ((this.check(url)) == true) return 0;
-            else {
-                this.saveToStoredFile(new Bsc_news(url));
-                return 1;
-            }
-        }else if (url.indexOf("https://ripplecoinnews.com/") >= 0) {
-            if ((this.check(url)) == true) return 0;
-            else {
-                this.saveToStoredFile(new Ripplecoinnews(url));
-                return 1;
-            }
-        }else {
-            return 2;
-        }
     }
 
 

@@ -8,14 +8,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import org.example.des.database.DataBase;
+import org.example.des.database.JsonDatabase;
 
 import java.io.IOException;
 import java.net.URL;
 
 public class ScenceController {
 
-    public final DataBase DB = new DataBase("Stored_File");
+    public final JsonDatabase DB = new JsonDatabase("Stored_File");
 
     @FXML
     private Button timkiem_btn;

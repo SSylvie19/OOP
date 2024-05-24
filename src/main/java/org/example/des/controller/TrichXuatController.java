@@ -66,7 +66,7 @@ public class TrichXuatController extends ScenceController implements Initializab
     public void capNhat(ActionEvent event) {
         System.out.println("cap nhat");
         String url = Link.getText();
-        switch (DB.CheckInDatabase(url)) {
+        switch (DB.checkSource(url)) {
             case 0:
                 label_tx.setText("Bài viết đã có trong cơ sở dữ liệu từ trước.");
                 break;
